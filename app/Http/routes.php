@@ -11,15 +11,16 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-Route::group(['prefix' => 'articles'], function(){
-	Route::get('/', 'ArticleController@index');
-	// Route::get('/{id}', 'ArticleController@show');
-	// Route::get('/create', 'ArticleController@create');
-	// Route::post('/', 'ArticleController@store');
-	// Route::put('/{id}', 'ArticleController@update');
-	// Route::delete('/{id}', 'ArticleController@destroy');
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::group(['prefix' => 'articles'], function () {
+    Route::post('/store', 'ArticleController@store');
+    Route::get('/', 'ArticleController@index');
+    Route::get('/new', 'ArticleController@create');
+    Route::get('/{slug}', 'ArticleController@show');
+    Route::get('/{slug}/edit', 'ArticleController@edit');
+    Route::post('/update', 'ArticleController@update');
+    Route::get('/delete/{id}', 'ArticleController@destroy');
 });
 
